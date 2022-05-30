@@ -1,0 +1,9 @@
+{
+    "baseUrl": "https://odfel.fedpolybida.ng/portal/AdminSignin",
+    "defaultCommandTimeout": 8000,
+    "pageLoadTimeout": 20000,
+   "viewportHeight": 800,
+   "viewportWidth": 1500
+  
+   }
+   

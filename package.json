@@ -1,0 +1,14 @@
+{
+  "name": "odfelcypresstest",
+  "version": "1.0.0",
+  "description": "ODFEL Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vera",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^9.4.1"
+  }
+}
