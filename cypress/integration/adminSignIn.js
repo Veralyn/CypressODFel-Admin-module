@@ -12,7 +12,7 @@ it("I should not be able to login with an invalid password", function(){
     cy.get(adminSignIn.passwordField).type(adminSignIn.invalidPasswordText)
     cy.get(adminSignIn.signInBtn).click()
     cy.get(adminSignIn.errorMessage)
-    cy.wait(5000)
+    cy.wait(4000)
     // cy.get(adminSignIn.errorMessage).should('be visible')
 })
 
