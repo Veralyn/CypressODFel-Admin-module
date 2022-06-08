@@ -46,13 +46,19 @@ it("I should be able to click on all admissions icon", function(){
  
 it("I should be able to access pages under User Acess Module", function(){
 cy.get(userAccess.userAccessText).click()
-// cy.get(userAccess.userAccessSearch).type(userAccess.userSearchText)
+
 })
 
-it ("I should be able to click on Roles page", function(){
+// it ("I should be able to click on Roles page", function(){
+//     cy.get(userAccess.roles).click()
+//     cy.get(userAccess.userAccessSearch).type(userAccess.userSearchText)
+//     cy.get(userAccess.roles).click()
+//     cy.get(userAccess.setPriviledge).click({force: true})
+// })
+
+it("I should not be able to click on the submit button without entering the required fields", function(){
     cy.get(userAccess.roles).click()
     cy.get(userAccess.addnewRoles).click({force: true})
-    cy.get(userAccess.typenewRole).type(userAccess.roleText, {force: true})
-    cy.get(userAccess.roleDescription).type(userAccess.descriptionText, {force: true})
+    cy.get(userAccess.roleSubmit).click({force: true})
 })
 

@@ -35,10 +35,12 @@ noOfAdmission: ":nth-child(4) > a > .jss116 > .MuiTypography-root"
 userAccessText: ":nth-child(3) > .MuiButtonBase-root > .MuiButton-label",
 roles: ".open > .sub-menu > :nth-child(1) > .prepend-icon",
 userAccessSearch: ".MuiFormControl-root > .MuiInputBase-root > .MuiInputBase-input",
-userSearchText: "Director",
+userSearchText: "Test Role",
+setPriviledge: "MuiSvgIcon-root",
 addnewRoles: ".MuiButton-startIcon > .MuiSvgIcon-root > path",
 typenewRole: "MuiInputBase-input MuiInput-input",
 roleText: "Test Role",
 roleDescription: "MuiInputBase-input MuiInput-input",
-descriptionText: "Test Description"
+descriptionText: "Test Description",
+roleSubmit: ".mt-3 > .MuiButtonBase-root > .MuiButton-label",
  }

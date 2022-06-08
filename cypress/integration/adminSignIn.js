@@ -22,6 +22,7 @@ it("I should be able to login with a valid password", function(){
     cy.get(adminSignIn.emailField).type(adminSignIn.emailText)
      cy.get(adminSignIn.passwordField).type(adminSignIn.passwordlText)
      cy.get(adminSignIn.signInBtn).click()
+     
 })
 
 })

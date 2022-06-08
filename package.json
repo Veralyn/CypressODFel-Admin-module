@@ -9,6 +9,7 @@
   "author": "Vera",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^9.4.1"
+    "cypress": "^9.4.1",
+    "start-server-and-test": "^1.14.0"
   }
 }
