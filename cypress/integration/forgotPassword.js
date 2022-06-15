@@ -1,16 +1,46 @@
- import { adminSignIn} from "../fixtures/selectors.js";
+/// <reference types="cypress" />
+import { adminSignIn } from "../fixtures/selectors.js";
 
- describe("Given that i am on the Admin SignIn page", function(){
+describe("Given that i am on the Admin SignIn page", function () {
+  beforeEach(() => {
+    cy.visit("portal/adminsignin")
+    cy.get('a[href*="ForgotPassword"]').click()
+  })
+  it("test if on forgot password page", () => {
+    cy.get("img[alt='FedPolyLogo']").should("be.visible")
+    cy.contains("Forgot your password?")
+    cy.get("input[type='email']").should("be.visible")
+    cy.contains("Sign In")
+    cy.contains("Reset Password")
+
+  })
+
+  it("Test with wrong email format", () => {
+    cy.get("input[type='email']").type("verag")
+    cy.get("button").click()
+    cy.get(".notification-container").should(x => {
+      expect(x).to.contain("Email is invalid")
+    })
+  })
 
 
-it ("I should be able to click on forgot password button", function(){
-    cy.visit("/")
-    cy.get(adminSignIn.adminPageTitle).should('be.visible')
-    cy.get(adminSignIn.emailField).type(adminSignIn.emailText)
-    cy.get(adminSignIn.passwordField).type(adminSignIn.invalidPasswordText)
-    cy.get(adminSignIn.signInBtn).click()
-    // cy.wait(5000)
-    cy.get(adminSignIn.errorMessage) 
-    cy.get(adminSignIn.forgotYourPasswordBtn).click({force: true})
+  it("Test with email that does not exist", () => {
+    cy.get("input[type='email']").type("vonmichael@sidmach.com")
+    cy.get("button").click()
+    cy.contains("Loading")
+    cy.get(".notification-container").should(x => {
+      expect(x).to.contain("Email not recognized")
+    })
+
+  })
+
+
+  it("Test with email that does not exist", () => {
+    cy.get("input[type='email']").type("veralynmichael@gmail.com")
+    cy.get("button").click()
+    cy.contains("Loading")
+    cy.get(".notification-success").should(x => {
+      expect(x).to.contain("Success")
+    })
+  })
 })
- })

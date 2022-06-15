@@ -1,64 +1,96 @@
-import { adminSignIn,adminDashboard, userAccess } from "../fixtures/selectors.js";
- 
-describe("Given that i'm on the School Admin Dashboard page", function(){
+/// <reference types="cypress" />
+import { adminSignIn, adminDashboard, userAccess } from "../fixtures/selectors.js";
 
-})
-
-it("I should be able to login to navigate through different pages on the Admin Page", function(){
-    cy.visit("/")
-    cy.get(adminSignIn.adminPageTitle).should('be.visible')
+describe("Given that i'm on the School Admin Dashboard page", function () {
+  before(() => {
+    cy.visit("/portal/adminsignin")
     cy.get(adminSignIn.emailField).type(adminSignIn.emailText)
     cy.get(adminSignIn.passwordField).type(adminSignIn.passwordlText)
     cy.get(adminSignIn.signInBtn).click()
-    // cy.get(adminDashboard.pageTitle).should('be visible')
-    // cy.get(adminDashboard.allApplicantsText).click()
-    
-})
+    cy.get(".MuiCircularProgress-svg").should("be.visible")
+  })
 
-it("I should be able to click on all applicants icon and search for applicants", function(){
-    cy.get(adminDashboard.allApplicants).click()
+
+  it("Should be able to View and Search Applicants", () => {
+    // cy.get(".MuiCircularProgress-svg").should("be.visible")
+    cy.contains("Fetching Data")
+    cy.get("a[href='/portal/admin/InProgress']").should(x => {
+      expect(x).to.be.visible
+    })
+    cy.get("a[href='/portal/admin/InProgress'] > h2").should("contain.text", "All Applications")
+    cy.get("a[href='/portal/admin/InProgress'] > div > h3").should("be.visible")
+    cy.get("a[href='/portal/admin/InProgress'] > div > h3 > svg").should("be.visible")
+    cy.get("div > a[href='/portal/admin/InProgress']").click()
     cy.get(adminDashboard.searchApplicants).type(adminDashboard.searchText)
     cy.get(adminDashboard.backHome).click()
-})
+  })
 
-// it("I should be able to click and download list of all Applicants", function(){
-//     cy.get(adminDashboard.downloadIcon).click()
-//     cy.get(adminDashboard.backHome).click()
-// })
-
-it("I should be able to click on all Payments icon and search for all Payments", function(){
-    cy.get(adminDashboard.allPayments).click()
+  it("Should be able View and Search Applicants Payment History", () => {
+    // cy.get(".MuiCircularProgress-svg").should("be.visible")
+    cy.contains("Fetching Data")
+    cy.get("a[href='/portal/admin/InProgress']").should(x => {
+      expect(x).to.be.visible
+    })
+    cy.get("a[href='/portal/admin/PaymentHistory'] > h2").should("contain.text", "No. of Payments")
+    cy.get("a[href='/portal/admin/PaymentHistory'] > div > h3").should("be.visible")
+    cy.get("a[href='/portal/admin/PaymentHistory'] > div > h3 > svg").should("be.visible")
+    cy.get("div > a[href='/portal/admin/PaymentHistory']").click()
     cy.get(adminDashboard.searchPayment).type(adminDashboard.paymentText)
     cy.get(adminDashboard.backHome).click()
-})
+  })
 
-it("I should be able to click on all completed Applicantions and search for all Applcations", function(){
-    cy.get(adminDashboard.completedApplicantions).click()
-    cy.get(adminDashboard.searchApplications).type(adminDashboard.applicationText)
+  it("Should be able View All Completed Applications", () => {
+    // cy.get(".MuiCircularProgress-svg").should("be.visible")
+    cy.contains("Fetching Data")
+    cy.get("a[href='/portal/admin/InProgress']").should(x => {
+      expect(x).to.be.visible
+    })
+    cy.get("a[href='/portal/admin/ApproveApplications'] > h2").should("contain.text", "Completed Applications")
+    cy.get("a[href='/portal/admin/ApproveApplications'] > div > h3").should("be.visible")
+    cy.get("a[href='/portal/admin/ApproveApplications'] > div > h3 > svg").should("be.visible")
+    cy.get("div > a[href='/portal/admin/ApproveApplications']").click()
     cy.get(adminDashboard.backHome).click()
+  })
 
-})
-
-it("I should be able to click on all admissions icon", function(){
-    cy.get(adminDashboard.noOfAdmission).click()
+  it("Should be able view Number of Admissions", () => {
+    // cy.get(".MuiCircularProgress-svg").should("be.visible")
+    cy.contains("Fetching Data")
+    cy.get("a[href='/portal/admin/InProgress']").should(x => {
+      expect(x).to.be.visible
+    })
+    cy.get("a[href='/portal/admin/Students'] > h2").should("contain.text", "No. of Admissions")
+    cy.get("a[href='/portal/admin/Students'] > div > h3").should("be.visible")
+    cy.get("a[href='/portal/admin/Students'] > div > h3 > svg").should("be.visible")
+    cy.get("div > a[href='/portal/admin/Students']").click()
     cy.get(adminDashboard.backHome).click()
-})
- 
-it("I should be able to access pages under User Acess Module", function(){
-cy.get(userAccess.userAccessText).click()
+  })
 
-})
 
-// it ("I should be able to click on Roles page", function(){
+  
+  it("Should be able click on User Access Dropdown", () => {
+    cy.get(userAccess.userAccessText).click()
+    
+  })
+
+//   it ("Should be able to click on Roles Page", () =>{
 //     cy.get(userAccess.roles).click()
 //     cy.get(userAccess.userAccessSearch).type(userAccess.userSearchText)
-//     cy.get(userAccess.roles).click()
-//     cy.get(userAccess.setPriviledge).click({force: true})
-// })
+//     cy.get("tbody>tr").should("be.visible")
+//     cy.get(userAccess.editRole).click()
 
-it("I should not be able to click on the submit button without entering the required fields", function(){
-    cy.get(userAccess.roles).click()
-    cy.get(userAccess.addnewRoles).click({force: true})
-    cy.get(userAccess.roleSubmit).click({force: true})
+//   })
+
+
+
+
+  
+      
+
+
+
+
+
+
+
+  
 })
-

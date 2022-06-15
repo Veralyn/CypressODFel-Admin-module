@@ -43,4 +43,9 @@ roleText: "Test Role",
 roleDescription: "MuiInputBase-input MuiInput-input",
 descriptionText: "Test Description",
 roleSubmit: ".mt-3 > .MuiButtonBase-root > .MuiButton-label",
+editRole: "[title='Edit Role']:nth-child(1)"
+
+
+
+
  }
